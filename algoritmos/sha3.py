@@ -1,13 +1,17 @@
 import time, hashlib
 
 def hash384(pt : bytes):
-  start = time.time()
-  result = hashlib.sha3_384(pt).hexdigest()
-  end = time.time()
-  return {"time": end - start, "result": result}
+  count = 0
+  end = time.time() + 1
+  while time.time() < end:
+    result = hashlib.sha3_384(pt).hexdigest()
+    count += 1
+  return {"ops": count, "result": result}
   
 def hash512(pt : bytes):
-  start = time.time()
-  result = hashlib.sha3_512(pt).hexdigest()
-  end = time.time()
-  return {"time": end - start, "result": result}
+  count = 0
+  end = time.time() + 1
+  while time.time() < end:
+    result = hashlib.sha3_512(pt).hexdigest()
+    count += 1
+  return {"ops": count, "result": result}
